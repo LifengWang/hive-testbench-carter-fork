@@ -1,0 +1,42 @@
+set hive.execution.engine=spark;
+set spark.home=/opt/cloudera/parcels/CDH/lib/spark/;
+set spark.master=yarn-client;
+set spark.eventLog.enabled=true;
+set spark.eventLog.dir=hdfs:///user/spark/applicationHistory;
+set spark.serializer=org.apache.spark.serializer.KryoSerializer;
+set hive.spark.job.monitor.timeout=1800s;
+set spark.network.timeout=1200s;
+
+set hive.merge.sparkfiles=false;
+set spark.kryo.referenceTracking=false;
+set spark.io.compression.codec=lzf;
+set spark.storage.memoryFraction=0.01;
+set spark.executor.extraJavaOptions=-XX:+UseParallelOldGC -XX:ParallelGCThreads=5 -XX:NewRatio=1 -XX:SurvivorRatio=1 -XX:+UseCompressedOops;
+set spark.yarn.maxAppAttempts=1;
+
+set spark.driver.memory=10g;
+set spark.executor.cores=4;
+set spark.executor.memory=15g;
+set spark.yarn.executor.memoryOverhead=3072;
+
+set spark.driver.maxResultSize=10g;
+
+
+
+-- hive vectorization parameters
+set hive.vectorized.execution.enabled=false;
+set hive.vectorized.execution.reduce.enabled=false;
+set hive.vectorized.execution.reduce.groupby.enabled=false;
+set hive.vectorized.use.vector.serde.deserialize=false;
+set hive.vectorized.adaptor.usage.mode=chosen;
+-- set hive.vectorized.input.format.excludes=org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat;
+
+
+
+
+set hive.vectorized.execution.enabled;
+set hive.vectorized.execution.reduce.enabled;
+set hive.vectorized.execution.reduce.groupby.enabled;
+set hive.vectorized.use.vector.serde.deserialize;
+set hive.vectorized.adaptor.usage.mode;
+set hive.vectorized.input.format.excludes;
